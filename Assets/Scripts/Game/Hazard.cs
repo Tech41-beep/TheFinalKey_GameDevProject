@@ -1,19 +1,18 @@
 using UnityEngine;
 
-/// <summary>
-/// PROPOSED lose condition (team must approve): touching a hazard zone ends the game.
-/// To disable it, delete the "Hazard" object in the Game scene.
-/// Attach to: a Hazard object (Collider with Is Trigger ON).
-/// Owner: Socheat / Bonsak (placement)
-/// </summary>
 public class Hazard : MonoBehaviour
 {
+    private bool hasTriggered = false;
+
     private void OnTriggerEnter(Collider other)
     {
+        if (hasTriggered) return;
+
         if (!other.CompareTag("Player")) return;
 
         if (GameManager.Instance != null)
         {
+            hasTriggered = true;
             GameManager.Instance.LoseGame();
         }
     }
