@@ -32,6 +32,12 @@ public class CameraController : MonoBehaviour
             playerBody.Rotate(Vector3.up, look.x);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
         // Tilt the camera up/down (clamped so you cannot flip over).
         pitch = Mathf.Clamp(pitch - look.y, -maxLookAngle, maxLookAngle);
         transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
