@@ -125,7 +125,7 @@ Branches: `main`, `feature/scene-management-kimtech`, `feature/player-controller
 
 ## Needs confirmation
 
-- Submission deadline: the brief says **16 November 2027** (probably 2026). Confirm with the lecturer.
+- Submission deadline: **16 November 2026** .
 - Lose condition (hazard zone) must be approved by the team.
 - Required submission format and links (GitHub, MP4, build ZIP, Slido).
 
