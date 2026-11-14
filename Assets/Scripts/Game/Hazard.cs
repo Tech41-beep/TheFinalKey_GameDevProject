@@ -1,8 +1,13 @@
 using UnityEngine;
-
-public class Hazard : MonoBehaviour
-{
+[RequireComponent(typeof(Collider))]
+public class Hazard : MonoBehaviour {
     private bool hasTriggered = false;
+
+    // Makes sure the collider is a trigger, even if you forget to tick it.
+    private void Reset()
+    {
+        GetComponent<Collider>().isTrigger = true;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,10 +15,14 @@ public class Hazard : MonoBehaviour
 
         if (!other.CompareTag("Player")) return;
 
-        if (GameManager.Instance != null)
+        if (GameManager.Instance == null)
         {
-            hasTriggered = true;
-            GameManager.Instance.LoseGame();
+            Debug.LogWarning("Hazard: no GameManager found in the scene.");
+            return;
         }
+
+        hasTriggered = true;
+        Debug.Log("Hazard hit: loading Lose scene.");
+        GameManager.Instance.LoseGame();
     }
 }
