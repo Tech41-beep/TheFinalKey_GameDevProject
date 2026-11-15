@@ -11,8 +11,9 @@ public class Hazard : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasTriggered) return;
+        Debug.Log("Hazard touched by: " + other.name);
 
+        if (hasTriggered) return;
         if (!other.CompareTag("Player")) return;
 
         if (GameManager.Instance == null)
