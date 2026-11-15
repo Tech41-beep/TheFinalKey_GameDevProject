@@ -1,21 +1,18 @@
 # The Final Key
 
-A 3D first-person maze and escape adventure made in Unity for the mid-term group project.
+A 3D first-person maze and escape game made in Unity for the Mid-Term Group Project (Playable Obstacle Course).
 
-You wake up trapped in a mysterious furnished cabin. Explore the maze-like rooms, find **3 keys**, and reach the **exit**.
+## Goal
 
-- **Engine:** Unity 6.3 LTS (6000.3.8f1), macOS (Apple Silicon)
-- **Language:** C#
-- **Environment asset:** [Furnished Cabin - 3D Urban](https://assetstore.unity.com/packages/3d/environments/urban/furnished-cabin-71426) by Johnny Kasapi
+You wake up trapped in a furnished cabin. Find **3 keys** hidden in the maze, then reach the **exit door** to escape.
 
-## Team
+## Rules
 
-| Member | Role |
-|---|---|
-| Kimtech | Scene management and game flow |
-| Socheat | Player controller |
-| Bonsak | Environment, map, Win/Lose screens, README |
-| Sarim | UI and player interaction |
+1. Look at a key and press **E** to collect it. The HUD shows your progress (0/3 to 3/3).
+2. The exit door stays locked until you have all 3 keys. With fewer keys, it tells you how many are missing.
+3. Reaching the exit with all 3 keys shows the **Win** screen.
+4. Touching the red hazard zone shows the **Lose** screen. Jump over it.
+5. On the Win and Lose screens you can **restart** or go back to the **Main Menu**.
 
 ## Controls
 
@@ -27,109 +24,92 @@ You wake up trapped in a mysterious furnished cabin. Explore the maze-like rooms
 | Left Shift | Run |
 | E | Interact / collect key |
 
-## How to play
+## Unity version and setup
 
-1. Press **Start Game** in the Main Menu.
-2. Explore the cabin and find the 3 keys. Look at a key and press **E**.
-3. The HUD shows your progress (0/3 to 3/3).
-4. Reach the exit door. With fewer than 3 keys it stays locked and tells you how many are missing.
-5. With all 3 keys the **Win** screen appears.
-6. Touching the red hazard zone (jump over it!) sends you to the **Lose** screen.
+- **Unity:** 6.3 LTS (6000.3.8f1)
+- **Platform:** macOS (Apple Silicon)
+- **Language:** C#
 
-## Setup (first time, every member)
+To run from source:
 
-1. Install **Unity 6.3 LTS (6000.3.8f1)** from Unity Hub.
+1. Install Unity 6.3 LTS (6000.3.8f1) from Unity Hub.
 2. Clone this repository and open the folder with Unity Hub.
-3. If you are creating the project fresh: create a new **3D** project named `TheFinalKey`, then copy this repository's `Assets/` folder, `README.md` and `.gitignore` into it.
-4. In Unity, run the menu **The Final Key > Build All Scenes (greybox)** (only ONE person does this, then commits the scenes).
-5. Open `Assets/Scenes/MainMenu.unity` and press Play.
+3. Open `Assets/Scenes/MainMenu.unity` and press Play.
 
-> The builder creates the 4 scenes, the Key and Player prefabs, and fills Build Settings automatically. The Game scene is a greybox (cube walls) maze that Bonsak decorates with the Furnished Cabin asset.
+To run the build: download the ZIP from the link below, unzip it and open the game. Unity is not needed.
+
+## Submission links
+
+| Item | Link |
+|---|---|
+| Git repository | _add link_ |
+| Gameplay video (MP4) | _add link_ |
+| Standalone build (ZIP) | _add link_ |
+
+## Team and contributions
+
+| Member | Role | Contribution |
+|---|---|---|
+| Kimtech | Scene management and game flow | `GameManager`, `SceneController` (win, lose, restart, scene loading) |
+| Socheat | Player controller | `PlayerController`, `CameraController`, `GameInput` (move, run, jump, mouse look) |
+| Bonsak | Environment, map, Win/Lose screens, README | Cabin environment and maze layout, Win and Lose scenes, `Hazard` (loads the Lose scene), README |
+| Sarim | UI and player interaction | `UIManager`, `PlayerInteraction`, `KeyCollectible`, `ExitDoor` (HUD, key pickup, exit check) |
 
 ## Project structure
 
 ```
 TheFinalKey/
 ├── Assets/
-│   ├── Scenes/            MainMenu, Game, Win, Lose
+│   ├── Scenes/              MainMenu, Game, Win, Lose
 │   ├── Scripts/
-│   │   ├── Player/        PlayerController, CameraController, GameInput
-│   │   ├── Game/          GameManager, KeyCollectible, ExitDoor, Hazard
-│   │   ├── UI/            UIManager
-│   │   ├── Interaction/   PlayerInteraction
-│   │   ├── Management/    SceneController
-│   │   └── Editor/        FinalKeySceneBuilder (setup tool, editor only)
-│   ├── Prefabs/           Player/, Keys/, Environment/
-│   ├── Materials/  Models/  UI/  Audio/
-│   └── FurnishedCabin/    (imported asset - do not edit)
-├── Packages/
-├── ProjectSettings/
+│   │   ├── Player/          PlayerController, CameraController, GameInput
+│   │   ├── Game/            GameManager, KeyCollectible, ExitDoor, Hazard
+│   │   ├── UI/              UIManager
+│   │   ├── Interaction/     PlayerInteraction
+│   │   ├── Management/      SceneController
+│   │   └── Editor/          FinalKeySceneBuilder (editor-only setup tool)
+│   ├── Prefabs/
+│   │   ├── Player/          Player prefab (tag "Player")
+│   │   ├── Keys/            Key prefab
+│   │   └── Environment/     Environment prefabs
+│   ├── Materials/           Hazard_Red, Key_Gold, Exit_Green, Floor_Wood, Wall_Beige
+│   ├── Models/  UI/  Audio/ Extra models, UI assets and sounds
+│   └── FurnishedCabin/      Imported Asset Store package (not edited)
+├── Packages/                Unity package list
+├── ProjectSettings/         Unity project settings (Build Settings, Input, Tags)
 └── README.md
 ```
 
+| Folder | What it holds |
+|---|---|
+| `Scenes` | The 4 scenes, in Build Settings order: `MainMenu`, `Game`, `Win`, `Lose`. `Game` is the only gameplay scene. |
+| `Scripts/Player` | Movement, running, jumping and mouse look (Socheat). |
+| `Scripts/Game` | Game rules and objects: key count, key pickup, exit door and hazard zone. |
+| `Scripts/UI` | The HUD: key count, interact prompt and messages (Sarim). |
+| `Scripts/Interaction` | Looking at a key and pressing E to collect it (Sarim). |
+| `Scripts/Management` | `SceneController`, the only script that loads scenes (Kimtech). |
+| `Scripts/Editor` | A tool that builds the scenes and prefabs. It only runs in the Unity Editor and is not part of the build. |
+| `Prefabs` | Reusable objects: the Player and the Key. |
+| `Materials` | Colors used in the maze: red hazard, gold key, green exit, wood floor, beige walls. |
+| `FurnishedCabin` | Furniture and environment from the Asset Store. Credited below. |
+
 ## Scripts
 
-| Script | Owner | Attached to | Purpose |
-|---|---|---|---|
-| `GameInput` | Socheat | (static helper) | Reads keyboard and mouse for both Unity input systems |
-| `PlayerController` | Socheat | Player | Walk, run, jump (CharacterController) |
-| `CameraController` | Socheat | Main Camera | Mouse look |
-| `GameManager` | Kimtech | GameManager object | Key count, win/lose/restart |
-| `SceneController` | Kimtech | SceneController object (menu, Win, Lose) | The only scene loader; button methods |
-| `KeyCollectible` | Sarim | Key prefab | One-time key pickup |
-| `ExitDoor` | Sarim | Exit trigger | Win check or "keys missing" message |
-| `Hazard` | Socheat / Bonsak | Hazard trigger | Loads the Lose scene |
-| `UIManager` | Sarim | GameUI canvas | HUD: key count, prompt, messages |
-| `PlayerInteraction` | Sarim | Main Camera | Raycast + E to collect |
-
-### How scripts communicate
-
-```
-PlayerInteraction --(E)--> KeyCollectible.Collect() --> GameManager.CollectKey() --> UIManager.UpdateKeyCount()
-ExitDoor (trigger) --> GameManager.HasAllKeys()
-      true  --> GameManager.WinGame()  --> SceneController.Load("Win")
-      false --> UIManager.ShowMessage("... need N more keys")
-Hazard (trigger) --> GameManager.LoseGame() --> SceneController.Load("Lose")
-Win / Lose / Menu buttons --> SceneController.LoadGame() / LoadMainMenu() / QuitGame()
-```
-
-## Git workflow
-
-Branches: `main`, `feature/scene-management-kimtech`, `feature/player-controller-socheat`, `feature/environment-bonsak`, `feature/ui-interaction-sarim`.
-
-- Bonsak owns `Game.unity`. Nobody else edits it at the same time.
-- Commit often with clear messages; review before merging into `main`.
-- Agree on method names before changing shared scripts.
-- In Unity: Edit > Project Settings > Editor > Asset Serialization = **Force Text**.
-
-## Using the Furnished Cabin asset (Bonsak)
-
-1. Import the asset from Package Manager > My Assets into `Assets/FurnishedCabin/` and do not modify it.
-2. Open its demo scene and note which rooms, walls and furniture exist.
-3. Drop furniture prefabs into `Game.unity` under the `Environment` object, replacing or covering the greybox walls where it makes sense.
-4. Make sure every wall and furniture piece has a Collider. Keep passages at least 1.2 m wide.
-5. If the asset's materials look pink, convert them: Edit > Rendering > Materials > Convert Selected Built-in Materials to URP.
-6. Keep the Key, Exit and Hazard objects and the Player; move them to match the new layout.
-
-## Testing checklist
-
-- [ ] Start Game loads the Game scene
-- [ ] Walk, run, jump; cannot walk through walls
-- [ ] "Press E to Collect" appears when looking at a key
-- [ ] Each key counts once; HUD shows 1/3, 2/3, 3/3
-- [ ] Exit with fewer than 3 keys shows the missing-keys message
-- [ ] Exit with 3 keys loads Win
-- [ ] Hazard loads Lose
-- [ ] Restart/Retry and Main Menu buttons work
-- [ ] Standalone macOS build runs
-
-## Needs confirmation
-
-- Submission deadline: **16 November 2026** .
-- Lose condition (hazard zone) must be approved by the team.
-- Required submission format and links (GitHub, MP4, build ZIP, Slido).
+| Script | Purpose |
+|---|---|
+| `GameInput` | Reads keyboard and mouse input |
+| `PlayerController` | Walk, run and jump using a CharacterController |
+| `CameraController` | Mouse look |
+| `GameManager` | Key count, win and lose |
+| `SceneController` | Loads scenes; used by the menu buttons |
+| `KeyCollectible` | One-time key pickup |
+| `ExitDoor` | Trigger: win if all keys are collected, otherwise shows a message |
+| `Hazard` | Trigger: loads the Lose scene when the player touches it |
+| `UIManager` | HUD: key count, interact prompt, messages |
+| `PlayerInteraction` | Raycast from the camera and E to collect |
 
 ## Credits
 
-- Furnished Cabin - 3D Urban by Johnny Kasapi (Unity Asset Store)
-# TheFinalKey_GameDevProject
+- Environment: [Furnished Cabin - 3D Urban](https://assetstore.unity.com/packages/3d/environments/urban/furnished-cabin-71426) by Johnny Kasapi (Unity Asset Store)
+- AI assistance: _state which parts (for example code help or README wording) were AI-assisted, as the course rules require_
+- Tutorials: _list any you used, or remove this line_
