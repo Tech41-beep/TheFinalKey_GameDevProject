@@ -100,6 +100,8 @@ TheFinalKey/
 | `GameInput` | Reads keyboard and mouse input |
 | `PlayerController` | Walk, run and jump using a CharacterController |
 | `CameraController` | Mouse look |
+| `ThirdPersonCamera` | It places the camera behind and above the player, lets the mouse orbit around the player, and turns the player to face the same direction as the camera. W always moves the player away from the camera |
+| PlayerWalkAnimation | Swings the arms and legs while the player walks, so the character looks like it’s walking rather than gliding. The limbs stop when the player stands still or is in the air. |
 | `GameManager` | Key count, win and lose |
 | `SceneController` | Loads scenes; used by the menu buttons |
 | `KeyCollectible` | One-time key pickup |
