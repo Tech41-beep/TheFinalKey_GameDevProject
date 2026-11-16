@@ -52,7 +52,7 @@ To run the build: download the ZIP from the link below, unzip it and open the ga
 | Member | Role | Contribution |
 |---|---|---|
 | Kimtech | Scene management and game flow | `GameManager`, `SceneController` (win, lose, restart, scene loading) |
-| Socheat | Player controller | `PlayerController`, `CameraController`, `GameInput` (move, run, jump, mouse look) |
+| Socheat | Player controller | `PlayerController`, `CameraController`, `ThirdPersonCamera`, `PlayerWalkAnimation`, `GameInput` (move, run, jump, mouse look) |
 | Bonsak | Environment, map, Win/Lose screens, README | Cabin environment and maze layout, Win and Lose scenes, `Hazard` (loads the Lose scene), README |
 | Sarim | UI and player interaction | `UIManager`, `PlayerInteraction`, `KeyCollectible`, `ExitDoor` (HUD, key pickup, exit check) |
 
@@ -63,7 +63,7 @@ TheFinalKey/
 ├── Assets/
 │   ├── Scenes/              MainMenu, Game, Win, Lose
 │   ├── Scripts/
-│   │   ├── Player/          PlayerController, CameraController, GameInput
+│   │   ├── Player/          PlayerController, CameraController, ThirdPersonCamera, PlayerWalkAnimation, GameInput
 │   │   ├── Game/            GameManager, KeyCollectible, ExitDoor, Hazard
 │   │   ├── UI/              UIManager
 │   │   ├── Interaction/     PlayerInteraction
