@@ -13,6 +13,7 @@ You wake up trapped in a furnished cabin. Find **3 keys** hidden in the maze, th
 3. Reaching the exit with all 3 keys shows the **Win** screen.
 4. Touching the red hazard zone shows the **Lose** screen. Jump over it.
 5. On the Win and Lose screens you can **restart** or go back to the **Main Menu**.
+6. 
 
 ## Controls
 
