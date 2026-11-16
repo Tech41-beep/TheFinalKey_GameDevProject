@@ -43,9 +43,9 @@ To run the build: download the ZIP from the link below, unzip it and open the ga
 
 | Item | Link |
 |---|---|
-| Git repository | _add link_ |
-| Gameplay video (MP4) | _add link_ |
-| Standalone build (ZIP) | _add link_ |
+| Git repository | https://github.com/Tech41-beep/TheFinalKey_GameDevProject |
+| Gameplay video (MP4) | https://drive.google.com/file/d/1NrfWcVPIj0eqHOGGFIim_nfpJMFSg2qt/view?usp=sharing |
+| Standalone build (ZIP) | https://drive.google.com/file/d/1-c96bAdTcB3krIrMUEdKZGbnXMgAo-st/view?usp=sharing |
 
 ## Team and contributions
 
